@@ -4,10 +4,10 @@ defmodule Tuber do
   """
 
   def search(query) do
-    with {:ok, response} <- HTTPoison.get(base_url() <> "/search", [], params: [part: "id,snippet", key: api_key(), q: query]) do
-      {:ok, response}
+    with {:ok, %{body: body}} <- HTTPoison.get(base_url() <> "/search", [], params: [part: "id,snippet", key: api_key(), q: query]) do
+      Poison.decode(body)
     else
-      error -> error
+      {:error, %{reason: reason}} -> {:error, reason}
     end
   end
 
