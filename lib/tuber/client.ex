@@ -4,12 +4,11 @@ defmodule Tuber.Client do
   @endpoint "https://www.googleapis.com/youtube/v3"
 
   def process_url(path) do
-    IO.puts path
     @endpoint <> path <> "&key=#{api_key()}"
   end
 
   def process_response_body(json) do
-    Poison.decode(json)
+    Poison.decode!(json)
   end
 
   defp api_key do
