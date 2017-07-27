@@ -4,18 +4,10 @@ defmodule Tuber do
   """
 
   def search(query) do
-    with {:ok, %{body: body}} <- HTTPoison.get(base_url() <> "/search", [], params: [part: "id,snippet", key: api_key(), q: query]) do
-      Poison.decode(body)
+    with {:ok, %{body: body}} <- Tuber.Client.get("/search", [], params: [part: "id,snippet", q: query]) do
+      body
     else
       {:error, %{reason: reason}} -> {:error, reason}
     end
-  end
-
-  defp base_url do
-    "https://www.googleapis.com/youtube/v3"
-  end
-
-  defp api_key do
-    Application.get_env(:tuber, :api_key)
   end
 end
