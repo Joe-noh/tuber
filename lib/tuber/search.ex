@@ -1,14 +1,17 @@
 defmodule Tuber.Search do
-  @spec list(String.t) :: {:ok, map()} | {:error, :atom}
+
   @doc """
   Search videos by keyword
   """
+  @spec list(String.t) :: {:ok, map()} | {:error, :atom}
   def list(query) do
     params = [
       part: "id,snippet",
       q: query
     ]
 
-    Tuber.Client.get("/search", [], params: params)
+    "/search"
+    |> Tuber.Client.get([], params: params)
+    |> Tuber.Client.unwrap
   end
 end

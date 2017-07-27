@@ -11,6 +11,14 @@ defmodule Tuber.Client do
     Poison.decode!(json)
   end
 
+  def unwrap({:ok, %{body: body}}) do
+    {:ok, body}
+  end
+
+  def unwrap({:error, %{reason: reason}}) do
+    {:error, reason}
+  end
+
   defp api_key do
     Application.get_env(:tuber, :api_key)
   end
