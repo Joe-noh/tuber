@@ -1,21 +1,21 @@
 # Tuber
 
-**TODO: Add description**
+YouTube Data API v3 Client for Elixir.
 
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `tuber` to your list of dependencies in `mix.exs`:
+This package can be installed by adding `tuber` to your list of dependencies in `mix.exs`:
 
 ```elixir
-def deps do
-  [
-    {:tuber, "~> 0.1.0"}
-  ]
-end
+def deps, do: [
+  {:tuber, "~> 0.1.0"}
+]
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/tuber](https://hexdocs.pm/tuber).
+And the API Key is required.
 
+```elixir
+config :tuber, api_key: "xxxxxxxxxxxxxxxxxxxxxxxx"
+```
+
+Documentation will be published on [HexDocs](https://hexdocs.pm/tuber).
