@@ -22,6 +22,8 @@ defmodule Tuber.Mixfile do
   defp deps, do: [
     {:httpoison, "~> 0.12"},
     {:poison, "~> 3.1"},
+
+    {:ex_doc, ">= 0.0.0", only: :dev},
   ]
 
   defp description, do: """
