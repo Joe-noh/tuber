@@ -1,18 +1,18 @@
-defmodule Tuber.Search do
+defmodule Tuber.Video do
 
   @doc """
-  Search videos
+  List videos
 
-  ref: https://developers.google.com/youtube/v3/docs/search/list?hl=ja
+  ref: https://developers.google.com/youtube/v3/docs/videos/list
   """
   @spec list(Keyword.t) :: {:ok, map()} | {:error, :atom}
   def list(params) do
-    defaultParams = [
+    defaultParams =[
       part: "id,snippet",
     ]
     params = Keyword.merge(defaultParams, params)
 
-    "/search"
+    "/videos"
     |> Tuber.Client.get([], params: params)
     |> Tuber.Client.unwrap
   end
